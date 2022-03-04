@@ -126,7 +126,7 @@ export const RegisterMatriculaModal = ({setOpen, datos}) => {
                   disabled = "disabled"
                   value = { nombre }
                   onChange = { handleInputChange  }
-                  autofocus="autofocus" 
+                  
               />
               <InputModal
                   text = "boleta"
@@ -134,6 +134,7 @@ export const RegisterMatriculaModal = ({setOpen, datos}) => {
                   placeholder = "Ingrese codigo de boleta"
                   value = { boleta }
                   onChange = { handleInputChange2  } 
+                  autofocus="autofocus" 
               />
               <InputModal
                   autocomplete = "off"
