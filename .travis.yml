@@ -1,15 +1,21 @@
 language: node_js
 node_js:
   - "stable"
-cache:
-  directories:
-  - node_modules
+cache: npm
+
+install:
+  - npm ci
+  
 script:
   - CI='' npm run build
+
+before_deploy:
+  - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
+
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $github_token
-  local_dir: build
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: bullcenter
+  skip-cleanup: true
   on:
-    branch: master
+    all_branches: true
