@@ -57,12 +57,13 @@ export const RegisterMatriculaModal = ({setOpen, datos}) => {
 
   const [ formValues2, handleInputChange2, setValues2 ] = useForm({
       matriculado:'',
+      boleta:'',
       fechaMatricula: fecha_hoy,
       tiempoMatricula: '',
       monto: ''
   });
 
-  const { matriculado, fechaMatricula, tiempoMatricula, monto } = formValues2;
+  const { matriculado,boleta, fechaMatricula, tiempoMatricula, monto } = formValues2;
 
   const Reset = () => {
     setValues({
@@ -82,6 +83,7 @@ export const RegisterMatriculaModal = ({setOpen, datos}) => {
     setValues2({
         ...formValues2,
         matriculado:'',
+        boleta:'',
         fechaMatricula: fecha_hoy,
         tiempoMatricula: '',
         monto: ''
@@ -124,6 +126,13 @@ export const RegisterMatriculaModal = ({setOpen, datos}) => {
                   disabled = "disabled"
                   value = { nombre }
                   onChange = { handleInputChange  } 
+              />
+              <InputModal
+                  text = "boleta"
+                  name = "boleta"
+                  placeholder = "Ingrese codigo de boleta"
+                  value = { boleta }
+                  onChange = { handleInputChange2  } 
               />
               <InputModal
                   autocomplete = "off"

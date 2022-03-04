@@ -10,7 +10,9 @@ export const MatriculasScreen = () => {
     
 
     const columns = [
+        { title: "Boleta", field: "boleta" },
         { title: "Matriculado por", field: "encargadoMatricula" },
+
         { title: "Miembro", field: "matriculado.nombre" },
         { title: "Fecha de matricula", field: 'fechaMatricula' },
         { title: "Fecha de vencimiento", field: 'matriculado.fechaVencimiento' },
