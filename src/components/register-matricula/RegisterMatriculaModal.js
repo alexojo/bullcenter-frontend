@@ -125,7 +125,8 @@ export const RegisterMatriculaModal = ({setOpen, datos}) => {
                   placeholder = {datos.name}
                   disabled = "disabled"
                   value = { nombre }
-                  onChange = { handleInputChange  } 
+                  onChange = { handleInputChange  }
+                  autofocus="autofocus" 
               />
               <InputModal
                   text = "boleta"
@@ -141,7 +142,7 @@ export const RegisterMatriculaModal = ({setOpen, datos}) => {
                   text = "fecha de matrícula"
                   value = { fechaMatricula }
                   onChange = { handleInputChange2  } 
-                  autofocus="autofocus"
+                  
 
               />
               <InputModal
