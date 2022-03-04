@@ -1,0 +1,64 @@
+.wrap{
+    width: 30%;
+    position: absolute;
+
+}
+
+
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+    box-shadow: 0px 0px 5px 1px black;
+  
+}
+
+.searchTerm {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.198);
+    font-family: $gilroy-medium;
+    border-right: none;
+    padding: 5px;
+    padding-left: 20px;
+    height: 20px;
+    border-radius: 3px 0 0 3px;
+    outline: none;
+    color:#ffff;
+    background-color: rgba(19,22,33,1);
+    font-size: 16px;
+
+    ::placeholder {
+      font-size:  14px;
+      color: #ffff;
+    }
+
+    &:focus {
+      border: 2px solid rgba(184, 182, 182, 0.959);
+      box-shadow: 0px 0px 3px 1px $plomo;
+
+    }
+}
+
+.searchButton {
+    width: 40px;
+    height: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.198);
+    background: rgba(255, 255, 255, 0.198);
+    text-align: center;
+    color: #ffff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 18px;
+
+    &:hover {
+      opacity: 0.8;
+      color: #ffff;              
+    }
+
+    &:active {
+      border: 2px solid rgba(184, 182, 182, 0.959);
+      box-shadow: 0px 0px 3px 1px $plomo;
+    }
+}
+
+/*Resize the wrap to see the search bar change!*/

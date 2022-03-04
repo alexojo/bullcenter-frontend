@@ -1,0 +1,224 @@
+.register-attendance__title {
+    font-family: $montserrat;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.register-attendance__search {
+    width: 100%;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+.register-attendance__dash-container{
+
+    height: 200px;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    background-color: rgba(19,22,33,0.95);
+    border: 1px solid rgba(255, 255, 255, 0.198);
+    
+}
+
+.register-attendance__box-container {
+
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    //background-color: grey;
+    
+    display: flex;
+
+}
+
+.register-attendance__form {
+    
+    height: 100%;
+    width: 80%;
+    //background-color: blue;
+}
+
+.register-inputs__form {
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    //background-color: rgb(61, 60, 60);
+}
+
+.register-attendance__image {
+
+    //background-color: red;
+    height: 100%;
+    width: 20%;
+    //background-color: red;
+
+    text-align: center;
+}
+
+.register-image__image {
+    //background-color: yellow;
+    margin-top: 30px;
+    margin-right: 20px;
+    text-align: center;
+
+}
+
+.register-attendance__image img{
+
+    width: 60%;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 1px black;
+
+}
+
+
+.register-image__image button{
+    width: 80%;
+    height: 100%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: #FBCC4E;
+    padding: 5px;
+    
+    font-size: 18px;
+    font-weight: bold;
+    
+    &:hover {
+        opacity: 0.8;
+        color: #ffff;
+    }
+
+    &:active {
+        opacity: 0.9;
+    }
+}
+
+
+.register-attendance__button {
+    margin-top: 15px;
+    width: 300px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.component__button {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: #FBCC4E;
+    
+    font-size: 18px;
+    font-weight: bold;
+    
+    &:hover {
+        opacity: 0.8;
+        color: #ffff;
+    }
+
+    &:active {
+        opacity: 0.9;
+    }
+
+}
+
+.register-attendance__days-container {
+
+
+    height: 250px;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    background-color: rgba(19,22,33,0.95);
+    border: 1px solid rgba(255, 255, 255, 0.198);
+    margin-top: 10px;
+
+    
+}
+
+.register-attendance__date {
+    width: 100%;
+    height: 80px;
+    //background-color: red;
+}
+
+.register-attendance__cards {
+    width: calc(100% - 50px);
+    height: calc(80% - 50px);
+
+    display: flex;
+    //background-color: red;
+    justify-content: space-between;
+    position: static;
+}
+
+.register-attendance__date{
+    
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.form-attendance__date{
+    
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+.dates{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.dates input{
+    cursor: pointer;
+    font-family: $gilroy-medium;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.198);
+    border-radius: 3px;
+    box-shadow: 0px 0px 5px 1px black;
+    background-color: rgba(19,22,33,1);
+    font-size: 18px;
+    height: 35px;
+    width: 250px;
+    padding: 0 10px 0 20px;
+    color: #fff;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    &:focus {
+        outline: none;
+        border: 2px solid rgba(184, 182, 182, 0.959);
+        box-shadow: 0px 0px 3px 1px $plomo;
+        color: #fff;
+    }
+}
+
+.dates label{
+    font-size: 15px;
+    color: #FFFCFC;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: $gilroy-bold;
+    font-weight: 700;
+}

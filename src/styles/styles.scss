@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('http://fonts.cdnfonts.com/css/gilroy-bold');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+
+@import './base/settings';
+@import './base/base';
+
+// Components
+@import './components/card-days';
+@import './components/sidenavbar';
+@import './components/menu';
+@import './components/button';
+@import './components/input';
+@import './components/dashboard';
+@import './components/login';
+@import './components/load-image';
+@import './components/search';
+@import './components/register-member';
+@import './components/edit-member';
+@import './components/register-attendance';
+@import './components/register-matricula-modal';
+
+

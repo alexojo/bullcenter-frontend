@@ -1,0 +1,65 @@
+.register-image__image img{
+
+    width: 70%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 5px 1px black;
+}
+
+.custom-file-input {
+
+    color: transparent;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+}
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.custom-file-input::before {
+    content: 'Subir Imagen';
+    color: black;
+    font-family: $gilroy-bold;
+    position: absolute;
+    text-align: center;
+    background: #FBCC4E;
+    font-weight: 700;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 12pt;
+}
+
+
+
+
+
+.register-image__button {
+    
+    width: 80%;
+    height: 100%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: #FBCC4E;
+    padding: 5px;
+    color: transparent;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    
+    &:hover {
+        opacity: 0.8;
+        color: #ffff;
+    }
+
+    &:active {
+        opacity: 0.9;
+    }
+}

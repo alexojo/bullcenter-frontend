@@ -1,0 +1,26 @@
+.container-flayer {
+    width: calc(100% - 250px);
+    margin-left: 250px;
+    background:url("https://images.pexels.com/photos/3253501/pexels-photo-3253501.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.91;
+}
+
+.container-dashboard {
+
+    height: calc(100vh - 40px);
+    
+    background-color: rgba(19,22,33,0.95);
+
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    padding-bottom: 20px;
+    padding-top: 20px;
+
+}

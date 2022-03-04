@@ -1,0 +1,144 @@
+.auth__main-flayer {
+    background:url("https://images.pexels.com/photos/3253501/pexels-photo-3253501.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.91;
+}
+
+.auth__main {
+    align-items: center;
+    background: #131621;
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0.95;
+    
+}
+
+.auth__box-container {
+    
+    background-color: #757474;
+    text-align: center;
+    box-shadow: 0px 3px $dark-grey;
+    border-radius: 5px;
+    padding: 20px;
+    width: 400px;
+    height: 400px;
+    
+
+}
+
+.content__title {
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 30px;
+}
+
+.auth__title {
+    font-size: 35px;
+    font-family: $montserrat;
+    color: #FBCC4E;
+}
+
+
+
+.auth__input {
+    color: $dark-grey;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 25px;
+    background-color: white;
+    font-size: 16px;
+    margin-bottom: 10px;
+    height: 45px;
+    width: 100%;
+    padding: 0 10px 0 20px;
+    color:black;
+    margin-top: 10px;
+    transition: border-bottom .3s ease;
+    
+    &:focus {
+ 
+        outline: none;
+    }
+
+    ::placeholder {
+        font-size:  14px;
+        color: gray;
+        opacity: 0.8;
+    }
+}
+
+.input__password {
+    position: relative;
+    display: flex;
+
+    
+}
+
+.input__password i {
+    position: absolute;
+    top: 40%;
+    right: 5%;
+
+    &:hover {
+        color: #4A4949;
+        cursor: pointer;
+    }
+}
+
+.btn__login {
+    margin-top: 20px;
+    cursor: pointer;
+    width: 90%;
+    height: 40px;
+    border-radius: 25px;
+    border: none;
+
+    background: #FBCC4E;
+    color: #ffff;
+    font-size: 18px;
+    font-weight: bold;
+    
+
+    &:hover {
+        opacity: 0.6;
+        color: #ffff;
+        
+
+    }
+    &:active {
+        opacity: 0.8;
+    }
+}
+
+.content__label {
+    display: flex;
+    justify-content: left;
+    align-self: flex-start;
+
+    margin-top: 25px;
+}
+
+.label__login {
+    font-size: 20px;
+    color: #FBCC4E;
+    font-weight: 600;
+    font-family: $montserrat;
+}
+
+.cargando__login{
+    margin-top: 30px;
+    font-size: 20px;
+    color: #2a2929;
+    font-weight: 600;
+    font-family: $montserrat;
+}

@@ -1,0 +1,54 @@
+.card__container {
+
+    background: radial-gradient(circle at 50% 50%, #000000, #060707, #0e1015, #10131c);
+    height: 89%;
+    width: 30%;
+    border:1px solid #000 ;
+    border-radius: 10px ;
+    
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    box-shadow: 0px 0px 5px 1px black;
+
+}
+
+
+
+
+.card__sub-container {
+    height: calc(100% - 20px);
+    width: calc(100% - 20px);
+    //background-color: rosybrown;
+    display: block;
+}
+
+.card__icon {
+    height: 35px;
+    width: 35px;
+    color: #10131c;
+    margin-bottom: 7px;
+    background-color:#FBCC4E;
+    font-size: 22px;
+    text-align: center;
+    border-radius: 8px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+
+.card__label-days {
+    margin-bottom: 7px;
+    //background-color: blue;
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.card__label {
+    font-size: 20px;
+    color: #FBCC4E;
+    font: medium;
+}

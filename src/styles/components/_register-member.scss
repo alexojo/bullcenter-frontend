@@ -1,0 +1,115 @@
+.register-member__title {
+    font-family: $montserrat;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.register-member__search {
+    width: 100%;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+.register-member__dash-container{
+
+    height: 380px;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    background-color: rgba(19,22,33,0.95);
+    border: 1px solid rgba(255, 255, 255, 0.198);
+}
+
+.register-member__box-container {
+
+
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    //background-color: grey;
+    
+    display: flex;
+    
+}
+
+.register-member__form {
+    
+    height: 100%;
+    width: 80%;
+    //background-color: blue;
+
+    
+}
+
+.register-inputs__form {
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    //background-color: rgb(61, 60, 60);
+}
+
+.register-member__image {
+
+    //background-color: red;
+    height: 100%;
+    width: 20%;
+    //background-color: red;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.register-image__image {
+    //background-color: yellow;
+    margin-top: 50px;
+    margin-right: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+
+
+.register-member__button {
+    margin-top: 15px;
+    width: 300px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-member-component__button {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: #FBCC4E;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    
+    &:hover {
+        opacity: 0.8;
+        color: #ffff;
+
+                    
+    }
+
+    &:active {
+        opacity: 0.9;
+    }
+
+}
+
