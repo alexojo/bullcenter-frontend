@@ -19,7 +19,7 @@ export const EditMember = () => {
         fechaInicio:"2021-01-01"
     });
 
-    const { dni, nombre, peso, celular, buscardni, fechaInicio, fechaVencimiento } = formValues;
+    const { dni, nombre, peso, celular, buscardni } = formValues;
 
     const handleSearchDni = (e) => {
         e.preventDefault();

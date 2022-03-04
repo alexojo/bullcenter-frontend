@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import { Input } from '../components/Input';
 import { useForm } from '../../hooks/useForm';
 import { Search } from '../components/Search';
-import { crearMatricula,read,actualizarMiembro } from '../api/apiCore';
+import { read } from '../api/apiCore';
 
 import Swal from 'sweetalert2';
 import { RegisterMatricula, FechaHoy } from '../functions/RegistrarMatricula';
@@ -35,7 +35,7 @@ export const RegisterMatriculaScreen = () => {
         monto: ''
     });
     
-    const { matriculado, fechaMatricula, tiempoMatricula, monto } = formValues2;
+    const { fechaMatricula, tiempoMatricula, monto } = formValues2;
     
     const handleSearchDni = (e) => {
         e.preventDefault();
@@ -102,7 +102,7 @@ export const RegisterMatriculaScreen = () => {
         setValues({
           ...formValues,
           montoDeuda: monto - montoPagado
-    });
+        });
         
     }, [monto, montoPagado])
 

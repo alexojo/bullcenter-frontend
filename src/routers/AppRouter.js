@@ -10,8 +10,8 @@ import { PublicRoute } from './PublicRoute';
 import { DashboardRouter} from './DashboardRouter';
 import { PrivateRoute } from './PrivateRoute';
 import { LoginScreen } from '../components/login/LoginScreen';
-import { login, logout, selectUser } from '../reducers/authReducer';
-import { signin, autenticacion, estaAutenticado } from '../components/api/apiCore'
+import { selectUser } from '../reducers/authReducer';
+//import { signin, autenticacion, estaAutenticado } from '../components/api/apiCore'
 
 export const AppRouter = () => {
 
@@ -19,7 +19,7 @@ export const AppRouter = () => {
   const [ isLoggedIn, setIsLoggedIn ] = useState( true );
   const user = useSelector( selectUser );
 
-  const jwt = JSON.parse(localStorage.getItem("jwt"));
+  //const jwt = JSON.parse(localStorage.getItem("jwt"));
   
 
   useEffect(() => {
