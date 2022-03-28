@@ -3,11 +3,16 @@ import { TablePagination, Grid, Typography, Divider } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { listarMatriculas } from '../api/apiCore';
 import { FechaHoy } from '../functions/RegistrarMatricula';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
+import esLocale from 'date-fns/locale/es'
+import { useForm } from '../../hooks/useForm';
 
 export const DailyScreen = () => {
 
   const [tableData, setTableData] = useState([])
-  const [summaryData, setSummaryData] = useState(0)
+  const [montoData, setMontoData] = useState(0)
+  const [deudaData, setDeudaData] = useState(0)
   // FECHA DEL DIA ACTUAL
   let d = new Date();
   let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
@@ -17,11 +22,16 @@ export const DailyScreen = () => {
   let fechainicial = ye.toString() + "-" + mo.toString() + "-01";
   let fechafinal   = ye.toString() + "-" + mo.toString() + "-" + da.toString();
 
+  const [ formValues, handleInputChange ] = useForm({
+    date2: fechafinal
+  });
+
+  const { date2 } = formValues;
+
   //DATOS DE TABLA
   const columns = [
     { title: "Boleta", field: "boleta" },
     { title: "Matriculado por", field: "encargadoMatricula" },
-
     { title: "Miembro", field: "matriculado" },
     { title: "Meses", field: 'tiempoMatricula' },
     { title: "Monto", field: 'monto' },
@@ -30,7 +40,7 @@ export const DailyScreen = () => {
 
   
 
-  const ListarMatriculasHoy = () =>{
+  const ListarMatriculasHoy = (fecha) =>{
     listarMatriculas()
     .then(resp=> {
 
@@ -39,8 +49,7 @@ export const DailyScreen = () => {
 
       for (var i = 0 ; i < matriculas.length; i ++ ){
 
-        const fecha_hoy = FechaHoy();
-        if(matriculas[i].fechaMatricula.substring(0,10) === fecha_hoy){
+        if(matriculas[i].fechaMatricula.substring(0,10) === fecha){
           
           const values = {
             boleta: matriculas[i].boleta,
@@ -62,22 +71,39 @@ export const DailyScreen = () => {
         total = total + table[i].monto;
         deudas = deudas + table[i].deuda;
       }
-      setSummaryData(total-deudas)
+      setMontoData(total)
+      setDeudaData(deudas)
     })
   }
 
 
   // CARGAR TABLA
   useEffect(()=>{
-    ListarMatriculasHoy()
+    ListarMatriculasHoy(date2)
 
-  },[])  
+  },[date2])  
+
+  
 
 
   return (
     <>
       <div className = "menu__title">
-        RESUMEN DE {fechafinal}
+        RESUMEN DEL DÍA {date2}
+      </div>
+
+      <div className = "menu__fechas">
+
+          <MuiPickersUtilsProvider utils = {DateFnsUtils} locale = { esLocale }> 
+
+              <div className = "register-attendance__date">
+
+                  <div className="dates">
+                      <input format = "yyyy-mm-dd" type="date" name ="date2" value= { date2 } onChange = { handleInputChange }/>
+                  </div>                  
+
+              </div>
+          </MuiPickersUtilsProvider>
       </div>
 
       <div style={{ width: "97%", Maxheight:"90%"}}>
@@ -90,8 +116,18 @@ export const DailyScreen = () => {
               Pagination: (props) => <>
                 <Divider/>
                 <Grid container style={{ padding:15}}>
-                  <Grid sm={6} item><Typography variant="h6">Monto total:</Typography></Grid>
-                  <Grid sm={6} item align="center"><Typography variant="h6" >S/.{summaryData}.00</Typography></Grid>
+                  <Grid sm={6} item>
+                    <Typography variant="h6" >Monto:</Typography>
+                    <Typography variant="h6" style={{color: 'red'}}>Deuda:</Typography>
+                    <Divider/>
+                    <Typography variant="h6">Monto Total:</Typography>
+                  </Grid>
+                  <Grid sm={6} item align="center">
+                    <Typography variant="h6" >  S/.{montoData}.00</Typography>
+                    <Typography variant="h6" style={{color: 'red'}}>- S/.{deudaData}.00</Typography>
+                    <Divider/>
+                    <Typography variant="h6" >S/.{montoData - deudaData}.00</Typography>
+                    </Grid>
                 </Grid>
                 <Divider/>
                 <TablePagination {...props} />
