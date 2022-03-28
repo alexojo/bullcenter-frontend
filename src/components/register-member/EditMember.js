@@ -23,14 +23,11 @@ export const EditMember = () => {
 
     const handleSearchDni = (e) => {
         e.preventDefault();
-        console.log(buscardni);
         read(buscardni)
         .then(response => {
             if (response.error){
-                console.log("pipi")
                 Swal.fire('Error', 'El usuario no existe', 'error');
             } else {
-                console.log("aea")
                 setValues({
                 ...formValues,
                 nombre : response.nombre,
@@ -52,7 +49,6 @@ export const EditMember = () => {
 
     function processImage(event){
         const imageFile = event.target.files[0];
-        console.log(imageFile)
         const imageUrl = URL.createObjectURL(imageFile);
         setFileUrl(imageUrl)
      }

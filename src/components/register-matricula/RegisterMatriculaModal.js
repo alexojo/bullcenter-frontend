@@ -184,7 +184,7 @@ export const RegisterMatriculaModal = ({setOpen, datos}) => {
 
           <div className= "modalActions">
             <div className= "actionsContainer">
-              <button className=" deleteBtn" onClick={() => setOpen([false])} onClick={handleMatricula}>
+              <button className=" deleteBtn" onClick={() => {setOpen([false]);handleMatricula()}}>
                 Registrar
               </button>
               <button

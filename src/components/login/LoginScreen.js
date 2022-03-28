@@ -38,7 +38,6 @@ export const LoginScreen = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        console.log( dni );
 
         dispatch( start_loading() );
 
@@ -49,7 +48,7 @@ export const LoginScreen = () => {
                 Swal.fire('Error', 'El usuario no existe', 'error');
                 dispatch( finish_loading() );
             } else {
-
+                autenticacion(response);
                 //-- BUSCAR DNI
                 read(dni)
                 .then(response => {
@@ -59,7 +58,6 @@ export const LoginScreen = () => {
                         contrasenia: contrasenia,
                         nombre: response.nombre
                     }));
-
                 })
                 dispatch( finish_loading() );
                 
@@ -106,7 +104,7 @@ export const LoginScreen = () => {
                                 value={ contrasenia }
                                 onChange = { handleInputChange }
                             />
-                            <i onClick={togglePassword} class={ passwordShown ? "fas fa-eye" : "fas fa-eye-slash" }></i>
+                            <i onClick={togglePassword} className={ passwordShown ? "fas fa-eye" : "fas fa-eye-slash" }></i>
                         </div>
                         <button
                             type="submit"

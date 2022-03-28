@@ -6,10 +6,13 @@ import "../../index.css"
 
 
 import Swal from 'sweetalert2';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../reducers/authReducer';
+import { FechaHoy, ModificarDiasDisponibles } from '../functions/RegistrarMatricula';
 
 export const AlumnosScreen = () => {
 
-    
+    const user = useSelector( selectUser );
     // Form para Registrar Miembro ===================================
 
     const handleRegisterMember = ( newRow ) => {
@@ -24,8 +27,14 @@ export const AlumnosScreen = () => {
 
     // Form para Editar Miembro ===================================
     const handleEditMember = ( updatedRow ) => {
-
-        const formValues = {nombre: updatedRow.nombre.toUpperCase(), dni: updatedRow.dni, peso: 0, celular: updatedRow.celular, deuda: updatedRow.deuda}
+        console.log(updatedRow.diasDisponibles);
+        var fecha_vencimiento = ModificarDiasDisponibles(updatedRow.diasDisponibles);
+        console.log(fecha_vencimiento)
+        
+        // Fecha de Vencimiento
+        //var fecha_vencimiento = ModificarDiasDisponibles(updatedRow.diasDisponibles) fechaVencimiento: fecha_vencimiento
+        const formValues = {nombre: updatedRow.nombre.toUpperCase(), dni: updatedRow.dni, peso: 0, 
+            celular: updatedRow.celular, deuda: updatedRow.deuda, fechaVencimiento: fecha_vencimiento}
 
         actualizarMiembro( formValues,updatedRow.dni ).then(response =>{
             Swal.fire('Success', 'El usuario se actualizó exitosamente', 'success');
@@ -38,14 +47,10 @@ export const AlumnosScreen = () => {
 
     // Datos de Tabla ===================================
     const [tableData, setTableData] = useState([])
-    const columns = [
-        { title: "DNI", field: "dni"},
-        { title: "Nombre", field: "nombre" },
-        { title: "Dias Disponibles", field: "diasDisponibles", editable: 'never' },
-        { title: "Deuda", field: "deuda"},
-        { title: "Celular", field: 'celular' },
-        { title: "Fecha de Vencimiento", field: 'fechaVencimiento', editable: 'never' },
-    ]
+    const [columns, setColumns] = useState([])
+
+    
+    
 
     // Registrar datos de matricula ===================================
 
@@ -100,9 +105,31 @@ export const AlumnosScreen = () => {
     
 
     const tableRef = useRef();
-
     useEffect(()=>{
+        console.log("tabla")
         ActualizarTabla()
+        if(user.user !== null){
+
+            if (user && user?.user.dni === "23980730"){
+                setColumns([
+                    { title: "DNI", field: "dni"},
+                    { title: "Nombre", field: "nombre" },
+                    { title: "Dias Disponibles", field: "diasDisponibles" },
+                    { title: "Deuda", field: "deuda"},
+                    { title: "Celular", field: 'celular' },
+                    { title: "Fecha de Vencimiento", field: 'fechaVencimiento', editable: 'never' }
+                ])
+            }else {
+                setColumns([
+                    { title: "DNI", field: "dni"},
+                    { title: "Nombre", field: "nombre" },
+                    { title: "Dias Disponibles", field: "diasDisponibles", editable: 'never'},
+                    { title: "Deuda", field: "deuda"},
+                    { title: "Celular", field: 'celular' },
+                    { title: "Fecha de Vencimiento", field: 'fechaVencimiento', editable: 'never' },
+                ])
+            }
+        }
     },[open])
     return (
         <>

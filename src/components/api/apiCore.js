@@ -1,15 +1,18 @@
 import Axios from 'axios'
 
 export const signin = usuario => {
+    //console.log("login",usuario)
     return fetch(`https://bullcenter-backend.herokuapp.com/api/auth/login`,{
         method: "POST",
         headers: {
-            Accept: 'application/json',
-            "Content-Type": "application/json"
+            'Accept': 'application/json',
+            "Content-Type": "application/json",
+            'Authorization' : 'Bearer asd123asd123'
         },
         body: JSON.stringify(usuario)
     })
     .then(response => {
+        //console.log(response)
         return response.json()
     })
     .catch(err => {
@@ -20,6 +23,7 @@ export const signin = usuario => {
 export const autenticacion = (data) => {
     if(typeof window !== "undefined"){
         localStorage.setItem('jwt',JSON.stringify(data))
+        //console.log("autenticado")
     }
 }
 
@@ -29,7 +33,7 @@ export const estaAutenticado = () => {
     }
     if (localStorage.getItem('jwt')){
         // return JSON.parse(localStorage.getItem('jwt'))
-        return localStorage.getItem('jwt')
+        return true
     } else {
         return false
     }
@@ -42,7 +46,7 @@ export const signout = (next) => {
 }
 
 export const crearUsuario = (usuario) => {
-    console.log("aa",usuario)
+    //("aa",usuario)
     return fetch("https://bullcenter-backend.herokuapp.com/api/auth/create",{
         method: "POST",
         mode: "cors",
@@ -52,17 +56,17 @@ export const crearUsuario = (usuario) => {
         },
     })
     .then(response=>{
-        console.log("El usuario ha sido creado satisfactoriamente")
+        //console.log("El usuario ha sido creado satisfactoriamente")
         return response.json()
     })
     .catch(err=>{
-        console.log("El usuario no se pudo crear")
-        console.log(err)
+        //console.log("El usuario no se pudo crear")
+        //console.log(err)
     })
 }
 
 export const crearMiembro = (usuario) => {
-    console.log("aa",usuario)
+    //console.log("aa",usuario)
     return Axios.post("https://bullcenter-backend.herokuapp.com/api/auth/signup",{
         nombre: usuario.nombre, 
         dni: usuario.dni, 

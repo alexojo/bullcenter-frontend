@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
-import { Link, NavLink, useHistory } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../reducers/authReducer';
+import { logout, selectUser } from '../../reducers/authReducer';
 import {signout} from '../api/apiCore'
 
 export const Navbar = () => {
 
     const dispatch = useDispatch();
+    const user = useSelector( selectUser );
 
     const handleLogout = (e) => {
         e.preventDefault();
@@ -18,6 +19,8 @@ export const Navbar = () => {
                 
             <div className = "navbar-image">
                 <img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" alt="profile_picture"/>
+                { ( user?.user ) 
+                                && <p className='navbar-name'>{user.user.nombre}</p> }
             </div>
             
             <div className="navbar-collapse">
@@ -28,8 +31,17 @@ export const Navbar = () => {
                         exact
                         to="/menu"
                     >
-                        <span class="icon"><i class="fas fa-server"></i></span>
+                        <span className="icon"><i className="fas fa-server"></i></span>
                         Resumen
+                    </NavLink>
+                    <NavLink 
+                        activeClassName="active"
+                        className="nav-item" 
+                        exact
+                        to="/hoy"
+                    >
+                        <span className="icon"><i className="fas fa-server"></i></span>
+                        Resumen de Hoy
                     </NavLink>
 
                     <NavLink 
@@ -38,17 +50,17 @@ export const Navbar = () => {
                         exact
                         to="/attendance"
                     >
-                        <span class="icon"><i class="fas fa-portrait"></i></span>
+                        <span className="icon"><i className="fas fa-portrait"></i></span>
                         Registrar Asistencia
                     </NavLink>
 
-                    <NavLink 
+                    {/* <NavLink 
                         activeClassName="active"
                         className="nav-item" 
                         exact
                         to="/register-matricula"
                     >
-                        <span class="icon"><i class="fas fa-address-card"></i></span>
+                        <span className="icon"><i className="fas fa-address-card"></i></span>
                         Registrar Matrícula
                     </NavLink>
                     
@@ -58,7 +70,7 @@ export const Navbar = () => {
                         exact
                         to="/register-member"
                     >
-                        <span class="icon"><i class="fas fa-user"></i></span>
+                        <span className="icon"><i className="fas fa-user"></i></span>
                         Registrar Miembro
                     </NavLink>
 
@@ -68,9 +80,9 @@ export const Navbar = () => {
                         exact
                         to="/edit-member"
                     >
-                        <span class="icon"><i class="fas fa-user-edit"></i></span>
+                        <span className="icon"><i className="fas fa-user-edit"></i></span>
                         Editar a Miembro
-                    </NavLink>
+                    </NavLink> */}
 
                     <NavLink 
                         activeClassName="active"
@@ -78,7 +90,7 @@ export const Navbar = () => {
                         exact
                         to="/matriculas"
                     >
-                        <span class="icon"><i class="fas fa-user-edit"></i></span>
+                        <span className="icon"><i className="fas fa-user-edit"></i></span>
                         Matriculas
                     </NavLink>
 
@@ -88,7 +100,7 @@ export const Navbar = () => {
                         exact
                         to="/members"
                     >
-                        <span class="icon"><i class="fas fa-user-edit"></i></span>
+                        <span className="icon"><i className="fas fa-user-edit"></i></span>
                         Miembros
                     </NavLink>
 
@@ -98,7 +110,7 @@ export const Navbar = () => {
                             className="nav-item-logout"
                             onClick={ handleLogout }
                     > 
-                        <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                        <span className="icon"><i className="fas fa-sign-out-alt"></i></span>
                         Logout
                     </button>
                 </div>

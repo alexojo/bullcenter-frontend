@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Navbar } from '../components/components/Navbar';
+import { DailyScreen } from '../components/menu/DailyScreen';
 
 
 import {MenuScreen} from '../components/menu/MenuScreen';
@@ -27,6 +28,7 @@ export const DashboardRouter = () => {
                 
                     <Switch>
                         <Route exact path="/menu" component={ MenuScreen }/>
+                        <Route exact path="/hoy" component={ DailyScreen }/>
                         <Route exact path="/register-matricula" component={ RegisterMatriculaScreen }/>
                         <Route exact path="/attendance" component={ RegisterAttendanceScreen }/>
                         <Route exact path="/register-member" component={ RegisterMember }/>

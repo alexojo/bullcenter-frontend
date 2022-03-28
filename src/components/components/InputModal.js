@@ -31,12 +31,11 @@ export const InputModal = ({ autocomplete,
                         autoComplete = { autocomplete }
                         type = { type }
                         placeholder = { placeholder }
-                        name= { text }
+                        name= { name }
                         disabled = { disabled }
                         minlength = { minlength }
                         maxlength = { maxlength }
                         autoFocus = { autofocus }
-                        name = { name }
                         value = { value }
                         onChange = { onChange }
                     />

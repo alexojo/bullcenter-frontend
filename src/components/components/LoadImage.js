@@ -10,7 +10,7 @@ export const LoadImage = ({ src, text, value, onChange }) => {
             <div className = "register-image__button">
                 <input 
                     type="file" 
-                    class="custom-file-input" 
+                    className="custom-file-input" 
                     accept="image/*"
                     name= { text }
                     src = { value }

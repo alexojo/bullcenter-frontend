@@ -9,7 +9,7 @@ export const CardDays = ( { icon ,days, label, style }) => {
                 <div className = "card__sub-container">
 
                     <div className = "card__icon" >
-                        <i class={icon}></i>
+                        <i className={icon}></i>
                     </div>
 
                     <div className = "card__label-days">

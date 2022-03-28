@@ -160,7 +160,7 @@ export const MenuScreen = () => {
 
                 dnis.push(dni_aux)
 
-                console.log("listo")
+                //console.log("listo")
             }
 
             setTotalDnis(dnis)
@@ -198,8 +198,8 @@ export const MenuScreen = () => {
 
             var indexa = matriculas.length - (index + 1)
 
-            console.log(index,matriculas.length-index, indexa)
-            console.log(matriculas[indexa])
+            //console.log(index,matriculas.length-index, indexa)
+            //console.log(matriculas[indexa])
 
             var fechaInicio = matriculas[indexa].matriculado.fechaInicio
             var fechaVencimiento = matriculas[indexa].matriculado.fechaVencimiento
@@ -266,7 +266,7 @@ export const MenuScreen = () => {
                     
                     
                     actualizarMiembro(datos_matricula,buscardni)
-                    console.log("mayor que sistema, y no tiene dias")
+                    //console.log("mayor que sistema, y no tiene dias")
         
                 } else{// SI SUS DIAS DISPONIBLES > 0, AUN TIENE DIAS DISPONIBLES
 
@@ -283,7 +283,7 @@ export const MenuScreen = () => {
 
                     var datos_matricula = { dni, nombre, peso, fechaVencimiento: fecha_vencimiento, celular, fechaInicio: fechaInicio, buscardni };
                     
-                    console.log("mayor que sistema, y tiene dias")
+                    //console.log("mayor que sistema, y tiene dias")
                     actualizarMiembro(datos_matricula,buscardni);
                 }
 
@@ -296,7 +296,7 @@ export const MenuScreen = () => {
 
                 if ( fecha_vence >= fecha_matricula_vence){
 
-                    console.log("fecha de vencimiento es mayor")
+                    //console.log("fecha de vencimiento es mayor")
 
                     var datos_matricula = { dni, nombre, peso, fechaVencimiento: fecha_vence, celular, fechaInicio: fecha_matricula, buscardni };
 
@@ -305,7 +305,7 @@ export const MenuScreen = () => {
             }
 
             
-            console.log("_______________________________")
+            //console.log("_______________________________")
         })
         
         setIndex(index + 1)

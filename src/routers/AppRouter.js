@@ -10,8 +10,8 @@ import { PublicRoute } from './PublicRoute';
 import { DashboardRouter} from './DashboardRouter';
 import { PrivateRoute } from './PrivateRoute';
 import { LoginScreen } from '../components/login/LoginScreen';
-import { selectUser } from '../reducers/authReducer';
-//import { signin, autenticacion, estaAutenticado } from '../components/api/apiCore'
+import { login, selectUser } from '../reducers/authReducer';
+import { signin, autenticacion, estaAutenticado } from '../components/api/apiCore'
 
 export const AppRouter = () => {
 
@@ -19,37 +19,34 @@ export const AppRouter = () => {
   const [ isLoggedIn, setIsLoggedIn ] = useState( true );
   const user = useSelector( selectUser );
 
-  //const jwt = JSON.parse(localStorage.getItem("jwt"));
-  
+  if(JSON.parse(localStorage.getItem("jwt")) && user.user === null){
+    const jwt = JSON.parse(localStorage.getItem("jwt")).usuario;
+
+    dispatch( login({
+      dni: jwt.dni,
+      contrasenia: jwt.contrasenia,
+      nombre: jwt.nombre
+  }));
+  }
 
   useEffect(() => {
-
-    /*if(estaAutenticado()){
-      setIsLoggedIn(true);     
-
+    
+    if(estaAutenticado()){
+      
+      setIsLoggedIn(true);
     }
     else{
-      
       if(user?.user){
-        const dni = user.user.dni;
-        const contrasenia = user.user.contrasenia;
-        signin({dni, contrasenia})
-        .then(data => {
-          if (data.error){
-            setIsLoggedIn(false);
-          } else {
-            autenticacion(data);
-            setIsLoggedIn(true);
-          }
-        })}
+        setIsLoggedIn(true);
+      }
       else{
         setIsLoggedIn(false);
       }
 
-    }*/
+    }
 
     
-}, [dispatch, setIsLoggedIn, user])
+}, [user])
 
 
   return (

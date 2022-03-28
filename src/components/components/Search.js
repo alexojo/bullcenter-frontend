@@ -6,13 +6,13 @@ export const Search = ({name, BuscarDni, handleBuscarDni, handleSearchDni}) => {
 
 
     return (
-        <div class="wrap">
-            <div class="search">
+        <div className="wrap">
+            <div className="search">
 
                 <input
                     name = {name}
                     autocomplete = "off"
-                    class="searchTerm" 
+                    className="searchTerm" 
                     placeholder="Ingrese DNI" 
                     autoFocus = "autofocus"
                     minlength = "8" 
@@ -23,9 +23,9 @@ export const Search = ({name, BuscarDni, handleBuscarDni, handleSearchDni}) => {
 
                 />
 
-                <button type="submit" class="searchButton" onClick={handleSearchDni}>
+                <button type="submit" className="searchButton" onClick={handleSearchDni}>
 
-                    <i class="fa fa-search"></i>
+                    <i className="fa fa-search"></i>
 
                 </button>
 

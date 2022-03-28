@@ -63,7 +63,6 @@ export const RegisterMatriculaScreen = () => {
             }
         })
         .catch(err => {
-            console.log("pipipi");
             Swal.fire('Error', 'El usuario no existe', 'error');
         })
         

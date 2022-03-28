@@ -58,7 +58,7 @@ export const RegisterMatricula = ( fecha_hoy,
             
             actualizarMiembro(datos_matricula,buscardni)
 
-            console.log("no tiene dias");
+            //console.log("no tiene dias");
         } else{// SI SUS DIAS DISPONIBLES > 0, AUN TIENE DIAS DISPONIBLES
 
             //--- FECHA DE VENCIMIENTO
@@ -77,9 +77,9 @@ export const RegisterMatricula = ( fecha_hoy,
 
             actualizarMiembro(datos_matricula,buscardni);
 
-            console.log("aun tiene dias");
+            //console.log("aun tiene dias");
         }
-        console.log("fv > fs")
+        //console.log("fv > fs")
 
     // SI FECHA DE VENCIMIENTO ES MENOR, ENTONCES HAY MENOS DIAS
     } else {
@@ -123,4 +123,23 @@ export const FechaHoy = () => {
     const fecha_hoy  = ye.toString() + "-" + mo.toString() + "-" + da.toString();
 
     return fecha_hoy
+}
+
+export var ModificarDiasDisponibles = ( diasDisponibles ) => {
+
+    var aux_hoy = FechaHoy().split('-');
+    //console.log("1",aux_hoy)
+    let aux_hoy_1 = new Date(aux_hoy[0], aux_hoy[1]-1, aux_hoy[2]);
+    //console.log("2",aux_hoy, diasDisponibles, typeof(diasDisponibles))
+    aux_hoy_1 = new Date(aux_hoy_1.setDate(aux_hoy_1.getDate() + parseInt(diasDisponibles)));
+    //console.log("3",aux_hoy, typeof(diasDisponibles))
+
+    let ye1 = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(aux_hoy_1);
+    let mo1 = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(aux_hoy_1);
+    let da1 = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(aux_hoy_1);
+
+    var fecha_vencimiento  = ye1.toString() + "-" + mo1.toString() + "-" + da1.toString();
+
+    return fecha_vencimiento;
+
 }

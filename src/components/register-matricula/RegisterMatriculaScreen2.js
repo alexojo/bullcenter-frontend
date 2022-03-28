@@ -45,7 +45,7 @@ export const RegisterMatriculaScreen = () => {
         
         read(buscardni)
         .then(response => {
-            console.log(response);
+            //console.log(response);
             if (response.error){
                 Swal.fire('Error', 'El usuario no existe', 'error');
             } else {
@@ -66,7 +66,7 @@ export const RegisterMatriculaScreen = () => {
             }
         })
         .catch(err => {
-            console.log("pipipi");
+            //console.log("pipipi");
             Swal.fire('Error', 'El usuario no existe', 'error');
         })
         
@@ -94,8 +94,8 @@ export const RegisterMatriculaScreen = () => {
 
     const handleMatricula = (e) => {
         e.preventDefault();
-        //console.log("FV",fechaVencimiento.substring(0,10))
-        //console.log(diasDisponibles)
+        ////console.log("FV",fechaVencimiento.substring(0,10))
+        ////console.log(diasDisponibles)
         //--- FECHA DE HOY
         let aux_hoy = fecha_hoy.split('-');
         let fecha_sistema = new Date(aux_hoy[0], aux_hoy[1]-1, aux_hoy[2]);
@@ -106,12 +106,12 @@ export const RegisterMatriculaScreen = () => {
         let fecha_vence = new Date(aux_matricula[0], aux_matricula[1]-1, aux_matricula[2]);
         fecha_vence = new Date(fecha_vence.setDate(fecha_matricula.getDate() + (tiempoMatricula * 30)));
 
-        //console.log(formValues);
-        console.log( )
+        ////console.log(formValues);
+        //console.log( )
         // SI FECHA DE VENCIMIENTO ES MAYOR, ENTONCES HAY NUEVOS DIAS
         if (fecha_vence > fecha_sistema) {
 
-            console.log( (fecha_vence - fecha_matricula)/(1000*60*60*24) )
+            //console.log( (fecha_vence - fecha_matricula)/(1000*60*60*24) )
             
             let dias_disponibles = 0;
             
@@ -129,12 +129,12 @@ export const RegisterMatriculaScreen = () => {
 
                 var datos_matricula = { dni, nombre, peso, fechaVencimiento: fecha_vencimiento, celular, diasDisponibles: dias_disponibles, buscardni };
                 
-                //console.log(datos_matricula)
+                ////console.log(datos_matricula)
 
 
                 actualizarMiembro(datos_matricula,buscardni)
     
-                console.log("no tiene dias", dias_disponibles);
+                //console.log("no tiene dias", dias_disponibles);
             } else{// SI SUS DIAS DISPONIBLES > 0
                 
                 let dias_disponibles = (fecha_vence - fecha_sistema)/(1000*60*60*24) + diasDisponibles;
@@ -150,20 +150,20 @@ export const RegisterMatriculaScreen = () => {
 
                 var datos_matricula = { dni, nombre, peso, fechaVencimiento: fecha_vencimiento, celular, diasDisponibles: dias_disponibles, buscardni };
                 
-                console.log(datos_matricula)
+                //console.log(datos_matricula)
 
                 actualizarMiembro(datos_matricula,buscardni);
 
-                console.log("aun tiene dias", dias_disponibles);
+                //console.log("aun tiene dias", dias_disponibles);
             }
-            console.log(dias_disponibles)
+            //console.log(dias_disponibles)
 
 
-            console.log("fv > fs")
+            //console.log("fv > fs")
         // SI FECHA DE VENCIMIENTO ES MENOR, ENTONCES HAY MENOS DIAS
         } else {
             
-            console.log("entra aca")
+            //console.log("entra aca")
             //--- FECHA DE MATRICULA VENCE
             let aux_hoy = fechaVencimiento.substring(0,10).split('-');
             let fecha_matricula_vence = new Date(aux_hoy[0], aux_hoy[1]-1, aux_hoy[2]);
@@ -172,7 +172,7 @@ export const RegisterMatriculaScreen = () => {
 
             if ( fecha_matricula_vence < fecha_vence){
 
-                console.log("entra aca", fecha_vence, dias_disponibles)
+                //console.log("entra aca", fecha_vence, dias_disponibles)
 
                 var datos_matricula = { dni, nombre, peso, fechaVencimiento: fecha_vence, celular, diasDisponibles: dias_disponibles, buscardni };
 
@@ -314,7 +314,7 @@ const handleMatricula = (e) => {
 
                 if (dni === "71515941"){
 
-                    console.log("-",dni, fechaMatricula, tiempoMatricula)
+                    //console.log("-",dni, fechaMatricula, tiempoMatricula)
                     // TRABAJAR CON MATRICULAS //////////////////////
 
                     
@@ -338,7 +338,7 @@ const handleMatricula = (e) => {
                     fecha_vence = new Date(fecha_vence.setDate(fecha_matricula.getDate() + (tiempoMatricula * 30)));
 
                     
-                    console.log("xd", fechaInicio, fechaVencimiento, i, fecha_matricula, fecha_vence)
+                    //console.log("xd", fechaInicio, fechaVencimiento, i, fecha_matricula, fecha_vence)
 
 
 
@@ -370,7 +370,7 @@ const handleMatricula = (e) => {
                             
                             
                             actualizarMiembro(datos_matricula,buscardni)
-                            console.log("mayor que sistema, y no tiene dias")
+                            //console.log("mayor que sistema, y no tiene dias")
                 
                         } else{// SI SUS DIAS DISPONIBLES > 0, AUN TIENE DIAS DISPONIBLES
 
@@ -387,7 +387,7 @@ const handleMatricula = (e) => {
 
                             var datos_matricula = { dni, nombre, peso, fechaVencimiento: fecha_vencimiento, celular, fechaInicio: fechaInicio, buscardni };
                             
-                            console.log("mayor que sistema, y tiene dias")
+                            //console.log("mayor que sistema, y tiene dias")
                             actualizarMiembro(datos_matricula,buscardni);
                         }
 
@@ -400,7 +400,7 @@ const handleMatricula = (e) => {
 
                         if ( fecha_vence >= fecha_matricula_vence){
 
-                            console.log("fecha de vencimiento es mayor")
+                            //console.log("fecha de vencimiento es mayor")
 
                             var datos_matricula = { dni, nombre, peso, fechaVencimiento: fecha_vence, celular, fechaInicio: fecha_matricula, buscardni };
 

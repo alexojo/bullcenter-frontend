@@ -20,7 +20,6 @@ export const RegisterMember = () => {
 
     function processImage(event){
         const imageFile = event.target.files[0];
-        console.log(imageFile)
         const imageUrl = URL.createObjectURL(imageFile);
         setFileUrl(imageUrl)
     }
