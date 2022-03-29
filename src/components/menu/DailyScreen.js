@@ -2,7 +2,6 @@ import MaterialTable from 'material-table';
 import { TablePagination, Grid, Typography, Divider } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { listarMatriculas } from '../api/apiCore';
-import { FechaHoy } from '../functions/RegistrarMatricula';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import esLocale from 'date-fns/locale/es'
@@ -19,7 +18,7 @@ export const DailyScreen = () => {
   let mo = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(d);
   let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
 
-  let fechainicial = ye.toString() + "-" + mo.toString() + "-01";
+  //let fechainicial = ye.toString() + "-" + mo.toString() + "-01";
   let fechafinal   = ye.toString() + "-" + mo.toString() + "-" + da.toString();
 
   const [ formValues, handleInputChange ] = useForm({
@@ -67,9 +66,9 @@ export const DailyScreen = () => {
       
       var total = 0;
       var deudas = 0;
-      for (var i = 0 ; i < table.length; i ++ ){
-        total = total + table[i].monto;
-        deudas = deudas + table[i].deuda;
+      for (var j = 0 ; j < table.length; j ++ ){
+        total = total + table[j].monto;
+        deudas = deudas + table[j].deuda;
       }
       setMontoData(total)
       setDeudaData(deudas)

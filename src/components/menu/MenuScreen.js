@@ -5,7 +5,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import esLocale from 'date-fns/locale/es'
 import { useForm } from '../../hooks/useForm';
 import { CardDays } from "../components/CardDays";
-import { actualizarMiembro, listarMatriculas, listarMatriculas2, listarUsuarios, read_aux } from "../api/apiCore";
+import { listarMatriculas, listarUsuarios } from "../api/apiCore";
 
 
 export const MenuScreen = () => {
@@ -23,8 +23,8 @@ export const MenuScreen = () => {
         date2: fechafinal
     });
 
-    const [totalDnis, setTotalDnis] = useState([]);
-    const [index, setIndex] = useState(0)
+    //const [totalDnis, setTotalDnis] = useState([]);
+    //const [index, setIndex] = useState(0)
 
 
     const [total_matriculas, setTotal_Matriculas] = useState(0);
@@ -120,11 +120,6 @@ export const MenuScreen = () => {
         MiembrosActivos()
     }, [date1, date2])
 
-    const handleLogin = (e) => {
-        e.preventDefault();
-        TotalDeMatriculas()
-    }
-
     const style = {
         height: '150px',
         margin : '10px 20px 10px 20px',
@@ -133,7 +128,7 @@ export const MenuScreen = () => {
 
 
 
-    const handleReset = (e) => {
+    /* const handleReset = (e) => {
         e.preventDefault();
 
         listarUsuarios()
@@ -309,7 +304,7 @@ export const MenuScreen = () => {
         })
         
         setIndex(index + 1)
-    }
+    } */
     
     
     return (

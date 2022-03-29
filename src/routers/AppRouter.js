@@ -11,7 +11,7 @@ import { DashboardRouter} from './DashboardRouter';
 import { PrivateRoute } from './PrivateRoute';
 import { LoginScreen } from '../components/login/LoginScreen';
 import { login, selectUser } from '../reducers/authReducer';
-import { signin, autenticacion, estaAutenticado } from '../components/api/apiCore'
+import { estaAutenticado } from '../components/api/apiCore'
 
 export const AppRouter = () => {
 

@@ -44,12 +44,12 @@ export const RegisterAttendanceScreen = () => {
 
     //----------------------------------------- FORM DIAS ASISTIDOS
 
-    const [ formValues3, handleInputChange3, setValues3 ] = useForm({
+    const [ formValues3, setValues3 ] = useForm({
         dni: '',
         diasAsistidos: []
     });
 
-    const { dni, diasAsistidos } = formValues3;
+    //const { dni, diasAsistidos } = formValues3;
 
     //----------------------------------------- CARD DAYS
 

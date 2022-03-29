@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react'
-import { Redirect } from 'react-router';
-import { signin, autenticacion, estaAutenticado, read } from '../api/apiCore'
+import React, {useState} from 'react'
+import { signin, autenticacion, read } from '../api/apiCore'
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from '../../hooks/useForm';
-import { login, selectUser } from '../../reducers/authReducer';
+import { login} from '../../reducers/authReducer';
 import { start_loading, finish_loading, selectLoading } from '../../reducers/loadingReducer';
 
 import Swal from 'sweetalert2';
@@ -27,12 +26,6 @@ export const LoginScreen = () => {
     });
 
     const { dni, contrasenia } = formValues;
-
-    const style = {
-        height: '150px',
-        margin : '10px 20px 10px 20px',
-
-    }
 
     //------------------
 

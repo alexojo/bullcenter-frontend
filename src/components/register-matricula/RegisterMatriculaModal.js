@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import { useForm } from '../../hooks/useForm';
 import { InputModal } from '../components/InputModal';
-import { crearMatricula,read,actualizarMiembro } from '../api/apiCore';
+import { read} from '../api/apiCore';
 
 import { RegisterMatricula, FechaHoy } from '../functions/RegistrarMatricula';
 

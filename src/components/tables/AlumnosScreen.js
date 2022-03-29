@@ -8,7 +8,7 @@ import "../../index.css"
 import Swal from 'sweetalert2';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../reducers/authReducer';
-import { FechaHoy, ModificarDiasDisponibles } from '../functions/RegistrarMatricula';
+import { ModificarDiasDisponibles } from '../functions/RegistrarMatricula';
 
 export const AlumnosScreen = () => {
 
@@ -130,7 +130,7 @@ export const AlumnosScreen = () => {
                 ])
             }
         }
-    },[open])
+    },[open, user])
     return (
         <>
             <div className = "register-member__title">

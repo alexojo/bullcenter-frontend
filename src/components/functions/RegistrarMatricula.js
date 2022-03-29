@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { crearMatricula,read,actualizarMiembro } from '../api/apiCore';
+
+import { crearMatricula, actualizarMiembro } from '../api/apiCore';
 
 import Swal from 'sweetalert2';
 
