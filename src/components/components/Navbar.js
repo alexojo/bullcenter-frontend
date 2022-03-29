@@ -111,7 +111,7 @@ export const Navbar = () => {
                             onClick={ handleLogout }
                     > 
                         <span className="icon"><i className="fas fa-sign-out-alt"></i></span>
-                        Logout
+                        Salir
                     </button>
                 </div>
                 
