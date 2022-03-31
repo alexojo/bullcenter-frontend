@@ -44,12 +44,12 @@ export const RegisterAttendanceScreen = () => {
 
     //----------------------------------------- FORM DIAS ASISTIDOS
 
-    const [ formValues3, setValues3 ] = useForm({
+    const [ formValues3, handleInputChange3, setValues3 ] = useForm({
         dni: '',
         diasAsistidos: []
     });
 
-    //const { dni, diasAsistidos } = formValues3;
+    const { dni, diasAsistidos } = formValues3;
 
     //----------------------------------------- CARD DAYS
 
@@ -71,27 +71,26 @@ export const RegisterAttendanceScreen = () => {
 
             var dias_asistidos = [...new Set(response.diasAsistidos)]
 
+            //-- FECHA INICIAL
+            let fecha_inicial = date1.split('-');
+            fecha_inicial = new Date(fecha_inicial[0], fecha_inicial[1]-1, fecha_inicial[2]);
+            //-- FECHA FINAL
+            let fecha_final = date2.split('-');
+            fecha_final = new Date(fecha_final[0], fecha_final[1]-1, fecha_final[2]);
+
             for (var i = 0 ; i < dias_asistidos.length; i ++ ){ 
 
                 let fecha_aux = dias_asistidos[i].split('-');
                 fecha_aux = new Date(fecha_aux[0], fecha_aux[1]-1, fecha_aux[2]); // FECHA ASISTIDA
-                //-- FECHA INICIAL
-                let fecha_inicial = date1.split('-');
-                fecha_inicial = new Date(fecha_inicial[0], fecha_inicial[1]-1, fecha_inicial[2]);
-                //-- FECHA FINAL
-                let fecha_final = date2.split('-');
-                fecha_final = new Date(fecha_final[0], fecha_final[1]-1, fecha_final[2]);
-
+                
                 if (fecha_aux >= fecha_inicial 	&& fecha_aux <= fecha_final){
                     auxCardAsistidos = auxCardAsistidos + 1;
-                }
-
-                auxCardNoAsistidos = ( (fecha_final - fecha_inicial)/(1000*60*60*24) ) - auxCardAsistidos;
+                }  
             }  
+            auxCardNoAsistidos = ( (fecha_final - fecha_inicial)/(1000*60*60*24) ) - auxCardAsistidos;
 
             setCardDiasAsistidos( auxCardAsistidos );
             setCardDiasNoAsistidos( auxCardNoAsistidos );
-
 
         })
         .catch(err => {
@@ -104,9 +103,12 @@ export const RegisterAttendanceScreen = () => {
         e.preventDefault();
         read(buscardni)
         .then(response => {
+            
             if (response.error){
+                console.log(response.error)
                 Swal.fire('Error', 'El usuario no existe', 'error');
             } else {
+                console.log("todo ok")
                 setValues2({
                     ...formValues2,
                     nombre : response.nombre,
@@ -135,6 +137,7 @@ export const RegisterAttendanceScreen = () => {
                 let fecha_sistema = new Date(aux_hoy[0], aux_hoy[1]-1, aux_hoy[2]);
 
                 let diasDisponibles = (matricula_vence - fecha_sistema)/(1000*60*60*24);
+                console.log(diasDisponibles)
 
                 setCardDiasDisponibles(diasDisponibles)                
                 DiasCards()

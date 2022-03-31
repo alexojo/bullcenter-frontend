@@ -54,15 +54,9 @@ export const Navbar = () => {
                         Registrar Asistencia
                     </NavLink>
 
-                    {/* <NavLink 
-                        activeClassName="active"
-                        className="nav-item" 
-                        exact
-                        to="/register-matricula"
-                    >
-                        <span className="icon"><i className="fas fa-address-card"></i></span>
-                        Registrar Matrícula
-                    </NavLink>
+                    
+
+                    {/* 
                     
                     <NavLink 
                         activeClassName="active"

@@ -5,8 +5,8 @@ export const Search = ({name, BuscarDni, handleBuscarDni, handleSearchDni}) => {
 
     return (
         <div className="wrap">
-            <div className="search">
-
+            <form className="search">
+                
                 <input
                     name = {name}
                     autocomplete = "off"
@@ -22,12 +22,10 @@ export const Search = ({name, BuscarDni, handleBuscarDni, handleSearchDni}) => {
                 />
 
                 <button type="submit" className="searchButton" onClick={handleSearchDni}>
-
                     <i className="fa fa-search"></i>
-
                 </button>
 
-            </div>
+            </form>
         </div>
     )
 }
