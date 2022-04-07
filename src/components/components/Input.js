@@ -16,7 +16,7 @@ export const Input = ({ autocomplete,
 
     text = text.charAt(0).toUpperCase() +  text.slice(1) + ":";
   
-
+                            //
     return (
         <>
             <div className = "input__container">
