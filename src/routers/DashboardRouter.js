@@ -5,6 +5,7 @@ import { DailyScreen } from '../components/menu/DailyScreen';
 
 
 import {MenuScreen} from '../components/menu/MenuScreen';
+import { MultipleDailyScreen } from '../components/menu/MultipleDailyScreen';
 import { RegisterAttendanceScreen } from '../components/register-attendance/RegisterAttendanceScreen';
 import { RegisterMatriculaScreen } from '../components/register-matricula/RegisterMatriculaScreen';
 import { EditMember } from '../components/register-member/EditMember';
@@ -29,6 +30,7 @@ export const DashboardRouter = () => {
                     <Switch>
                         <Route exact path="/menu" component={ MenuScreen }/>
                         <Route exact path="/hoy" component={ DailyScreen }/>
+                        <Route exact path="/month" component={ MultipleDailyScreen }/>
                         <Route exact path="/register-matricula" component={ RegisterMatriculaScreen }/>
                         <Route exact path="/attendance" component={ RegisterAttendanceScreen }/>
                         <Route exact path="/register-member" component={ RegisterMember }/>

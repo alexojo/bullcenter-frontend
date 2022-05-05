@@ -43,6 +43,15 @@ export const Navbar = () => {
                         <span className="icon"><i className="fas fa-server"></i></span>
                         Resumen de Hoy
                     </NavLink>
+                    <NavLink 
+                        activeClassName="active"
+                        className="nav-item" 
+                        exact
+                        to="/month"
+                    >
+                        <span className="icon"><i className="fas fa-server"></i></span>
+                        Resumen del Mes
+                    </NavLink>
 
                     <NavLink 
                         activeClassName="active"
