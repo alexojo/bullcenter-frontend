@@ -143,3 +143,19 @@ export var ModificarDiasDisponibles = ( diasDisponibles ) => {
     return fecha_vencimiento;
 
 }
+
+export const RestarFechas = ( fechaVencimiento ) => {
+
+    const fecha_hoy  = FechaHoy();
+    let aux_hoy = fecha_hoy.split('-');
+    let fecha_sistema = new Date(aux_hoy[0], aux_hoy[1]-1, aux_hoy[2]);
+
+    let aux_vencimiento = fechaVencimiento.substring(0,10).split('-');
+    let matricula_vence = new Date(aux_vencimiento[0], aux_vencimiento[1]-1, aux_vencimiento[2]);
+
+    const diasDisponibles = (matricula_vence - fecha_sistema)/(1000*60*60*24);
+
+    return diasDisponibles;
+
+
+}

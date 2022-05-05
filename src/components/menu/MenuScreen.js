@@ -6,6 +6,7 @@ import esLocale from 'date-fns/locale/es'
 import { useForm } from '../../hooks/useForm';
 import { CardDays } from "../components/CardDays";
 import { listarMatriculas, listarUsuarios } from "../api/apiCore";
+import { RestarFechas } from "../functions/RegistrarMatricula";
 
 
 export const MenuScreen = () => {
@@ -27,9 +28,10 @@ export const MenuScreen = () => {
     //const [index, setIndex] = useState(0)
 
 
-    const [total_matriculas, setTotal_Matriculas] = useState(0);
-    const [miembros_matriculados, setMiembros_Matriculados] = useState(0);
-    const [miembros_activos, setMiembros_Activos] = useState(0);
+    const [total_matriculas, setTotal_Matriculas] = useState(0); // total de matricular
+    const [miembros_matriculados, setMiembros_Matriculados] = useState(0); // total de miembros matriculados
+    const [miembros_activos, setMiembros_Activos] = useState(0); // miembros activos
+    const [total_deudas, setTotal_Deudas] = useState(0); // deudas
 
     const { date1, date2 } = formValues;
 
@@ -92,26 +94,37 @@ export const MenuScreen = () => {
         })
     }
 
-    // MIEMBROS ACTIVOS
+    // MIEMBROS ACTIVOS y DEUDA TOTAL
     const MiembrosActivos = () => {
         listarUsuarios()
         .then(resp=>{
             
             const usuarios = [...new Set(resp)];
-            var activos = 0;
+            let activos = 0;
+            let deuda = 0;
+
+            console.log( usuarios.length )
 
             for (var i = 0 ; i < usuarios.length; i ++ ){ 
                 
-                var disponible = usuarios[i].diasDisponibles;
+                // Ver si miembro esta activo
+                var disponible = RestarFechas( usuarios[i].fechaVencimiento );
 
                 if (disponible >= 1){
                     activos =  activos + 1;
                 }
 
+                
+                // Sumar deuda
+                deuda = deuda + usuarios[i].deuda;
+
             }
+
             setMiembros_Activos( activos );
+            setTotal_Deudas( deuda );
         })
     }
+    
 
     //------------------------------------------
     useEffect(() => {
@@ -346,6 +359,8 @@ export const MenuScreen = () => {
                 <CardDays icon = "fas fa-users" days = {miembros_matriculados} label = {"Miembros Nuevos"} style = {style}/>
 
                 <CardDays icon = "fas fa-user-check" days = {miembros_activos} label = {"Miembros Activos"} style = {style}/>
+
+                <CardDays icon = "fas fa-user-check" days = {"S/."+total_deudas.toString()+".00"} label = {"Deuda Acumulada"} style = {style}/>
 
  
             </div>
