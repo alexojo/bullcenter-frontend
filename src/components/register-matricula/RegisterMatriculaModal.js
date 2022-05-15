@@ -4,6 +4,8 @@ import { InputModal } from '../components/InputModal';
 import { read} from '../api/apiCore';
 
 import { RegisterMatricula, FechaHoy } from '../functions/RegistrarMatricula';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../reducers/authReducer';
 
 
 export const RegisterMatriculaModal = ({setOpen, datos}) => {
@@ -11,6 +13,7 @@ export const RegisterMatriculaModal = ({setOpen, datos}) => {
   //--- FECHA
   const fecha_hoy  = FechaHoy();
   const usuario = datos[1];
+  const user = useSelector( selectUser );
 
   // Recuperar datos de usuario ------------------
   const [ formValues, handleInputChange, setValues ] = useForm({  
@@ -58,6 +61,7 @@ export const RegisterMatriculaModal = ({setOpen, datos}) => {
   const [ formValues2, handleInputChange2, setValues2 ] = useForm({
       matriculado:'',
       boleta:'',
+      encargadoMatricula: user.user.nombre,
       fechaMatricula: fecha_hoy,
       tiempoMatricula: '',
       monto: ''
