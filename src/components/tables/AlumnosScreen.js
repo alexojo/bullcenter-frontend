@@ -124,7 +124,7 @@ export const AlumnosScreen = () => {
                     { title: "DNI", field: "dni"},
                     { title: "Nombre", field: "nombre" },
                     { title: "Dias Disponibles", field: "diasDisponibles", editable: 'never'},
-                    { title: "Deuda", field: "deuda"},
+                    { title: "Deuda", field: "deuda", editable:'never'},
                     { title: "Celular", field: 'celular' },
                     { title: "Fecha de Vencimiento", field: 'fechaVencimiento', editable: 'never' },
                 ])
