@@ -110,7 +110,7 @@ export const AlumnosScreen = () => {
         ActualizarTabla()
         if(user.user !== null){
 
-            if (user && user?.user.dni === "23980730"){
+            if (user && (user?.user.dni === "23980730" || user?.user.dni === "48619359")){
                 setColumns([
                     { title: "DNI", field: "dni"},
                     { title: "Nombre", field: "nombre" },
