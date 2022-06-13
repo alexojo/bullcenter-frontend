@@ -1,6 +1,6 @@
 import React,{useState,useEffect, useRef} from 'react';
 import MaterialTable from "material-table";
-import {listarUsuarios, crearMiembro, actualizarMiembro} from "../api/apiCore"
+import {listarUsuarios, crearMiembro, actualizarMiembro, listarMatriculas, eliminarMatricula, eliminarMiembro} from "../api/apiCore"
 import  {RegisterMatriculaModal} from "../register-matricula/RegisterMatriculaModal"
 import "../../index.css"
 
@@ -13,7 +13,7 @@ import { ModificarDiasDisponibles } from '../functions/RegistrarMatricula';
 export const AlumnosScreen = () => {
 
     const user = useSelector( selectUser );
-    // Form para Registrar Miembro ===================================
+    // Form para Registrar Miembro ================================
 
     const handleRegisterMember = ( newRow ) => {
         const formValues = {nombre: newRow.nombre.toUpperCase(), dni: newRow.dni, peso: 0, celular: newRow.celular}
@@ -43,21 +43,37 @@ export const AlumnosScreen = () => {
             Swal.fire('Error', 'Revise los espacios correctamente', 'error');
         })
     }
+    // Form para Elimar Miembro y matriculas ================================
+    const handleDeleteMember = ( oldData ) => {
 
+        listarMatriculas()
+        .then(resp=>{
+            const matriculas = resp.filter(matricula => matricula.matriculado.dni === oldData.dni)
+            
+            if(matriculas.length > 0){
+                for (var i = 0 ; i < matriculas.length; i ++ ){
+                    eliminarMatricula(matriculas[i].id)
+                }
+            }    
+        })
+        eliminarMiembro(oldData.dni).then(response =>{
+            Swal.fire('Success', 'El usuario se eliminó exitosamente', 'success');
+        })
+    }
 
     // Datos de Tabla ===================================
     const [tableData, setTableData] = useState([])
     const [columns, setColumns] = useState([])
 
-    
-    
 
     // Registrar datos de matricula ===================================
 
     const [open, setOpen] = useState([false,''])
 
     const ActualizarTabla = () => {
-        listarUsuarios()
+        listarUsuarios()            
+        
+
         .then(resp=> {
             
             var Usuarios = []
@@ -102,7 +118,7 @@ export const AlumnosScreen = () => {
     }
 
     // Actualizar datos de tabla ===================================
-    
+    const [admin, setAdmin] = useState(false)
 
     const tableRef = useRef();
     useEffect(()=>{
@@ -119,6 +135,7 @@ export const AlumnosScreen = () => {
                     { title: "Celular", field: 'celular' },
                     { title: "Fecha de Vencimiento", field: 'fechaVencimiento', editable: 'never' }
                 ])
+                setAdmin(true)
             }else {
                 setColumns([
                     { title: "DNI", field: "dni"},
@@ -128,6 +145,7 @@ export const AlumnosScreen = () => {
                     { title: "Celular", field: 'celular' },
                     { title: "Fecha de Vencimiento", field: 'fechaVencimiento', editable: 'never' },
                 ])
+                setAdmin(false)
             }
         }
     },[open, user])
@@ -137,13 +155,16 @@ export const AlumnosScreen = () => {
                 REGISTRO DE MIEMBROS
             </div>
 
-            <div style={{ width: "97%", Maxheight:"90%"}}>
+            { admin ? 
+            
+            (<div style={{ width: "97%", Maxheight:"90%"}}>
                 <MaterialTable
                     title="Employee Data"
                     tableRef={tableRef}
                     data={tableData}
                     columns={columns}
                     editable={{
+
                         onRowAdd: (newRow) => new Promise((resolve, reject) => {
                             const updatedRows = [...tableData, { id: Math.floor(Math.random() * 100), ...newRow }]
                             
@@ -166,9 +187,26 @@ export const AlumnosScreen = () => {
                                 setTableData(updatedRows)
                                 resolve()
                             }, 2000)
-                        })
+                        }),
+
+                        onRowDelete: oldData =>
+                            new Promise((resolve, reject) => {
+                                                              
+                                const index = oldData.tableData.id;
+                                const dataDelete = [...tableData];
+                                dataDelete.splice(index, 1);
+                                
+                                handleDeleteMember(oldData)
+
+                                setTimeout(() => {
+                                    
+                                    setTableData(dataDelete);
+                                    resolve();
+                                }, 1000);
+                            })
 
                     }}
+                    localization={{ body: { editRow: { deleteText: 'Esta seguro que desea eliminar a este usuario?' } } }}
                     options={{
                         actionsColumnIndex: -1,
                         addRowPosition: "first",
@@ -183,7 +221,58 @@ export const AlumnosScreen = () => {
                         }
                         ]}
                 />
-            </div>
+            </div>) : 
+            (<div style={{ width: "97%", Maxheight:"90%"}}>
+            <MaterialTable
+                title="Employee Data"
+                tableRef={tableRef}
+                data={tableData}
+                columns={columns}
+                editable={{
+
+                    onRowAdd: (newRow) => new Promise((resolve, reject) => {
+                        const updatedRows = [...tableData, { id: Math.floor(Math.random() * 100), ...newRow }]
+                        
+                        handleRegisterMember(newRow)
+
+                        setTimeout(() => {
+                            setTableData(updatedRows)
+                            resolve()
+                        }, 2000)
+                    }),
+
+                    onRowUpdate:(updatedRow,oldRow)=>new Promise((resolve,reject)=>{
+                        const index=oldRow.tableData.id;
+                        const updatedRows=[...tableData]
+                        updatedRows[index]=updatedRow
+
+                        handleEditMember(updatedRow)
+
+                        setTimeout(() => {
+                            setTableData(updatedRows)
+                            resolve()
+                        }, 2000)
+                    }),
+
+                }}
+                localization={{ body: { editRow: { deleteText: 'Esta seguro que desea eliminar a este usuario?' } } }}
+                options={{
+                    actionsColumnIndex: -1,
+                    addRowPosition: "first",
+                    showTitle: false,
+                    header: !open[0]
+                }}
+                actions={[
+                    {
+                        icon: 'save',
+                        tooltip: "Registrar matrícula",
+                        onClick: (event, rowData) => setOpen([true, rowData]),
+                    }
+                    ]}
+            />
+        </div>)}
+
+            
             { open[0] && <RegisterMatriculaModal setOpen={ setOpen } datos={open} />}
       </>
     )
