@@ -6,13 +6,14 @@ import { read} from '../api/apiCore';
 import { RegisterMatricula, FechaHoy } from '../functions/RegistrarMatricula';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../reducers/authReducer';
+import { Dialog } from '@material-ui/core';
 
 
-export const RegisterMatriculaModal = ({setOpen, datos}) => {
+export const RegisterMatriculaModal = ({setOpen, open, datos}) => {
 
   //--- FECHA
   const fecha_hoy  = FechaHoy();
-  const usuario = datos[1];
+  const usuario = datos;
   const user = useSelector( selectUser );
 
   // Recuperar datos de usuario ------------------
@@ -109,11 +110,17 @@ export const RegisterMatriculaModal = ({setOpen, datos}) => {
     
   }, [monto, montoPagado])
   
+  const handleClose = () => {
+    setOpen([false])
+  };
 
 
   return (
-    <>
-      <div className="darkBG" onClick={() => setOpen(false)} />
+    <Dialog 
+      selectedValue={open}
+      open={open}
+      onClose={handleClose}>
+      
       <div className="centered">
         <div className="modal">
 
@@ -201,6 +208,13 @@ export const RegisterMatriculaModal = ({setOpen, datos}) => {
           </div>
         </div>
       </div>
-    </>
+    </Dialog>
   )
 }
+{/* <Dialog
+            selectedValue={open1}
+            open={open1}
+            onClose={handleClose}
+            >
+                JAJAJAJA
+            </Dialog> */}

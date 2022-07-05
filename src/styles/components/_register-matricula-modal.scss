@@ -59,6 +59,7 @@ transform: translate(-50%, -50%);
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .deleteBtn {
@@ -105,6 +106,18 @@ transform: translate(-50%, -50%);
     background: rgb(95, 95, 95);
 }
 
+.cargando{
+    color: rgba(95, 95, 95, 0.6);
+    text-align: center;
+    font-weight: bold;
+}
+
+.comentario{
+    padding: 10px 0px 10px;
+    color: rgba(95, 95, 95, 0.8);
+    text-align: justify;
+}
+
 .input__label-modal {
     font-size: 14px;
     color: black;
@@ -144,6 +157,61 @@ transform: translate(-50%, -50%);
 
     
 }
+
+.input__input-search-modal {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    input{
+
+        font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+        box-sizing: border-box;
+        border: 2px solid rgb(181,181,181);
+        border-radius: 5px;
+        box-shadow: rgba(0, 10, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        background-color: white;
+        font-size: 15px;
+        margin-bottom: 8px;
+        height: 40px;
+        width: 100%;
+        padding: 0 5px 0 15px;
+        color: grey;
+        margin-top: 5px;
+    
+        &:focus {
+     
+            outline: none;
+            border: 3px solid rgb(255, 187, 0);
+            box-shadow: rgba(55, 187, 0, 0.12) 0px 1px 3px, rgba(55, 187, 0, 0.24) 0px 1px 2px;
+        }
+    
+        ::placeholder {
+            font-size:  14px;
+            color: #ffff;
+        }
+    }
+    button{
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin-left: 5px;
+        width: 40px;
+        height: 40px;
+        border-radius: 5px;
+        border: 2px solid rgb(181,181,181);
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(181, 181, 181, 0.775);
+            color: white;
+        }
+
+    }
+}
+
+
 
 ///////////////////////
 

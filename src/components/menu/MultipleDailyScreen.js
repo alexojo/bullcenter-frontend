@@ -7,6 +7,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import esLocale from 'date-fns/locale/es'
 import { useForm } from '../../hooks/useForm';
 
+
 export const MultipleDailyScreen = () => {
 
     const [tableData, setTableData] = useState([])
@@ -91,6 +92,8 @@ export const MultipleDailyScreen = () => {
     
       },[date1, date2])  
 
+      
+
     return (
 
         <>
@@ -147,6 +150,8 @@ export const MultipleDailyScreen = () => {
                 }}
             />
         </div>
+        
+
     </>
             
     )

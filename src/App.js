@@ -7,6 +7,7 @@ import { store } from './store/store';
 import './index.css'
 
 
+
 export const App = () => {
     return (
       <Provider store = { store }>

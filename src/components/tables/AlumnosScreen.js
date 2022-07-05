@@ -9,6 +9,8 @@ import Swal from 'sweetalert2';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../reducers/authReducer';
 import { ModificarDiasDisponibles } from '../functions/RegistrarMatricula';
+import { RegisterMemberModal } from '../register-member/RegisterMemberModal';
+import { Button, Dialog } from '@material-ui/core';
 
 export const AlumnosScreen = () => {
 
@@ -24,6 +26,7 @@ export const AlumnosScreen = () => {
             Swal.fire('Error', 'Revise que no hayan espacios vacíos y que el usuario no este registrado anteriormente', 'error');
         })
     }
+    
 
     // Form para Editar Miembro ===================================
     const handleEditMember = ( updatedRow ) => {
@@ -69,6 +72,7 @@ export const AlumnosScreen = () => {
     // Registrar datos de matricula ===================================
 
     const [open, setOpen] = useState([false,''])
+    const [open2, setOpen2] = useState(false)
 
     const ActualizarTabla = () => {
         listarUsuarios()            
@@ -148,11 +152,18 @@ export const AlumnosScreen = () => {
                 setAdmin(false)
             }
         }
-    },[open, user])
+    },[])
+
+
     return (
         <>
             <div className = "register-member__title">
                 REGISTRO DE MIEMBROS
+            </div>
+            <div className='new-member__container'>
+                
+                <button className = "new-member" onClick={() => setOpen2([true,''])}> <i className="fas fa-plus"></i>   Nuevo Miembro </button>
+
             </div>
 
             { admin ? 
@@ -165,16 +176,7 @@ export const AlumnosScreen = () => {
                     columns={columns}
                     editable={{
 
-                        onRowAdd: (newRow) => new Promise((resolve, reject) => {
-                            const updatedRows = [...tableData, { id: Math.floor(Math.random() * 100), ...newRow }]
-                            
-                            handleRegisterMember(newRow)
-
-                            setTimeout(() => {
-                                setTableData(updatedRows)
-                                resolve()
-                            }, 2000)
-                        }),
+                    
 
                         onRowUpdate:(updatedRow,oldRow)=>new Promise((resolve,reject)=>{
                             const index=oldRow.tableData.id;
@@ -210,8 +212,7 @@ export const AlumnosScreen = () => {
                     options={{
                         actionsColumnIndex: -1,
                         addRowPosition: "first",
-                        showTitle: false,
-                        header: !open[0]
+                        showTitle: false
                     }}
                     actions={[
                         {
@@ -229,18 +230,7 @@ export const AlumnosScreen = () => {
                 data={tableData}
                 columns={columns}
                 editable={{
-
-                    onRowAdd: (newRow) => new Promise((resolve, reject) => {
-                        const updatedRows = [...tableData, { id: Math.floor(Math.random() * 100), ...newRow }]
-                        
-                        handleRegisterMember(newRow)
-
-                        setTimeout(() => {
-                            setTableData(updatedRows)
-                            resolve()
-                        }, 2000)
-                    }),
-
+                
                     onRowUpdate:(updatedRow,oldRow)=>new Promise((resolve,reject)=>{
                         const index=oldRow.tableData.id;
                         const updatedRows=[...tableData]
@@ -259,21 +249,24 @@ export const AlumnosScreen = () => {
                 options={{
                     actionsColumnIndex: -1,
                     addRowPosition: "first",
-                    showTitle: false,
-                    header: !open[0]
+                    showTitle: false
                 }}
                 actions={[
                     {
                         icon: 'save',
                         tooltip: "Registrar matrícula",
-                        onClick: (event, rowData) => setOpen([true, rowData]),
+                        onClick: (event, rowData) => {setOpen([true, rowData])},
                     }
                     ]}
             />
         </div>)}
 
             
-            { open[0] && <RegisterMatriculaModal setOpen={ setOpen } datos={open} />}
+        { open[0] && <RegisterMatriculaModal open={open} setOpen={setOpen}  datos={open[1]} />}
+        { open2 && <RegisterMemberModal setOpen={ setOpen2 } open={open2}/>}
+
+            
+            
       </>
     )
 }

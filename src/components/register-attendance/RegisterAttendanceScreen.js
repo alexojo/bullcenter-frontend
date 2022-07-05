@@ -13,6 +13,7 @@ import { read, registrarAsistencia } from '../api/apiCore';
 import Swal from 'sweetalert2';
 
 
+
 export const RegisterAttendanceScreen = () => {
 
     let d = new Date();
@@ -180,6 +181,9 @@ export const RegisterAttendanceScreen = () => {
         })
     }
 
+
+    
+
     return (
         <>
             <div className = "register-attendance__title">
@@ -271,6 +275,7 @@ export const RegisterAttendanceScreen = () => {
                 <button className = "component__button" onClick = { handleRegisterAttendance }>Registrar Asistencia</button>
                 
             </div>
+            
         </>
 
     )
