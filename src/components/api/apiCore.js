@@ -2,7 +2,7 @@ import Axios from 'axios'
 
 export const signin = usuario => {
     //console.log("login",usuario)
-    return fetch(`https://bullcenter-backend.herokuapp.com/api/auth/login`,{
+    return fetch(`https://sector33-backend.vercel.app/api/auth/login`,{
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -47,7 +47,7 @@ export const signout = (next) => {
 
 export const crearUsuario = (usuario) => {
     //("aa",usuario)
-    return fetch("https://bullcenter-backend.herokuapp.com/api/auth/create",{
+    return fetch("https://sector33-backend.vercel.app/api/auth/create",{
         method: "POST",
         mode: "cors",
         body: JSON.stringify(usuario),
@@ -67,7 +67,7 @@ export const crearUsuario = (usuario) => {
 
 export const crearMiembro = (usuario) => {
     //console.log("aa",usuario)
-    return Axios.post("https://bullcenter-backend.herokuapp.com/api/auth/signup",{
+    return Axios.post("https://sector33-backend.vercel.app/api/auth/signup",{
         nombre: usuario.nombre, 
         dni: usuario.dni, 
         peso: usuario.peso,
@@ -76,7 +76,7 @@ export const crearMiembro = (usuario) => {
 }
 
 export const read = (dni) => {
-    return fetch(`https://bullcenter-backend.herokuapp.com/api/auth/${dni}`,{
+    return fetch(`https://sector33-backend.vercel.app/api/auth/${dni}`,{
         method: "GET",
     }).then(response => {
         const responseJson = response.json()
@@ -86,7 +86,7 @@ export const read = (dni) => {
 }
 
 export const read_aux = (dni, fechaMatricula, tiempoMatricula) => {
-    return fetch(`https://bullcenter-backend.herokuapp.com/api/auth/${dni}`,{
+    return fetch(`https://sector33-backend.vercel.app/api/auth/${dni}`,{
         method: "GET",
     }).then(response => {
         const responseJson = response.json()
@@ -97,7 +97,7 @@ export const read_aux = (dni, fechaMatricula, tiempoMatricula) => {
 
 export const crearMatricula = (matricula) => {
     console.log("matricula", matricula)
-    return fetch("https://bullcenter-backend.herokuapp.com/api/mat/register",{
+    return fetch("https://sector33-backend.vercel.app/api/mat/register",{
         method: "POST",
         body: JSON.stringify(matricula),
         headers:{
@@ -115,7 +115,7 @@ export const crearMatricula = (matricula) => {
 }
 
 export const actualizarMiembro = (usuario,dni) => {
-    return Axios.put(`https://bullcenter-backend.herokuapp.com/api/auth/${dni}`,{
+    return Axios.put(`https://sector33-backend.vercel.app/api/auth/${dni}`,{
         nombre: usuario.nombre, 
         dni: usuario.dni,
         peso: usuario.peso,
@@ -128,14 +128,14 @@ export const actualizarMiembro = (usuario,dni) => {
 }
 
 export const registrarAsistencia = (usuario,dni) => {
-    return Axios.put(`https://bullcenter-backend.herokuapp.com/api/auth/registroas/${dni}`,{
+    return Axios.put(`https://sector33-backend.vercel.app/api/auth/registroas/${dni}`,{
         dni: usuario.dni,
         diasAsistidos: usuario.diasAsistidos
     })
 }
 
 export const listarUsuarios = () => {
-    return fetch("https://bullcenter-backend.herokuapp.com/api/auth/users",{
+    return fetch("https://sector33-backend.vercel.app/api/auth/users",{
         method: "GET",
     }).then(response => {
         const responseJson = response.json()
@@ -145,7 +145,7 @@ export const listarUsuarios = () => {
 }
 
 export const listarMatriculas = () => {
-    return fetch("https://bullcenter-backend.herokuapp.com/api/mat/list",{
+    return fetch("https://sector33-backend.vercel.app/api/mat/list",{
         method: "GET",
     }).then(response => {
         const responseJson = response.json()
@@ -155,7 +155,7 @@ export const listarMatriculas = () => {
 }
 
 export const listarMatriculas2 = (indice) => {
-    return fetch("https://bullcenter-backend.herokuapp.com/api/mat/list",{
+    return fetch("https://sector33-backend.vercel.app/api/mat/list",{
         method: "GET",
     }).then(response => {
         const responseJson = response.json()
@@ -165,9 +165,9 @@ export const listarMatriculas2 = (indice) => {
 }
 
 export const eliminarMiembro = (dni) => {
-    return Axios.delete(`https://bullcenter-backend.herokuapp.com/api/auth/${dni}`)
+    return Axios.delete(`https://sector33-backend.vercel.app/api/auth/${dni}`)
 }
 
 export const eliminarMatricula = (id) => {
-    return Axios.delete(`https://bullcenter-backend.herokuapp.com/api/mat/remove/${id}`)
+    return Axios.delete(`https://sector33-backend.vercel.app/api/mat/remove/${id}`)
 }
